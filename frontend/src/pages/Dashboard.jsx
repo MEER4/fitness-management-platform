@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import LoadingSpinner from '../components/LoadingSpinner';
 
 const Dashboard = () => {
-    const { user } = useContext(AuthContext);
+    const { user, logout } = useContext(AuthContext);
     const navigate = useNavigate();
 
     if (!user) {
@@ -22,8 +22,19 @@ const Dashboard = () => {
                     <h1 className="text-3xl font-bold text-gray-900">Dashboard</h1>
                     <p className="text-gray-600">Welcome back, {user.name || user.email}!</p>
                 </div>
-                <div className="bg-blue-100 text-blue-800 px-4 py-1 rounded-full text-sm font-semibold capitalize">
-                    {user.role}
+                <div className="flex items-center gap-4">
+                    <div className="bg-blue-100 text-blue-800 px-4 py-1 rounded-full text-sm font-semibold capitalize">
+                        {user.role}
+                    </div>
+                    <button
+                        onClick={() => {
+                            logout();
+                            navigate('/login');
+                        }}
+                        className="text-gray-500 hover:text-red-600 text-sm font-medium"
+                    >
+                        Logout
+                    </button>
                 </div>
             </header>
 
