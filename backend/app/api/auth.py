@@ -44,3 +44,20 @@ def read_users_me(current_user: User = Depends(deps.get_current_user)):
     Get current user.
     """
     return current_user
+
+@router.get("/clients", response_model=list[User])
+def read_clients(
+    skip: int = 0,
+    limit: int = 100,
+    db: Session = Depends(deps.get_db),
+    current_user: User = Depends(deps.get_current_user),
+) -> Any:
+    """
+    Retrieve all clients (Coach only).
+    """
+    if current_user.role != "coach":
+        raise HTTPException(
+            status_code=400, detail="The user doesn't have enough privileges"
+        )
+    users = crud_user.get_users_by_role(db, role="client", skip=skip, limit=limit)
+    return users

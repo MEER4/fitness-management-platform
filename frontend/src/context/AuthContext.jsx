@@ -30,11 +30,16 @@ export const AuthProvider = ({ children }) => {
 
     const login = async (username, password) => {
         try {
-            const formData = new FormData();
+            // Use URLSearchParams to send application/x-www-form-urlencoded
+            const formData = new URLSearchParams();
             formData.append('username', username);
             formData.append('password', password);
 
-            const response = await api.post('/auth/login', formData);
+            const response = await api.post('/auth/login', formData, {
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            });
             const { access_token } = response.data;
 
             localStorage.setItem('token', access_token);

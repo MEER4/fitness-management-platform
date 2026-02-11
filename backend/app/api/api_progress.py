@@ -31,3 +31,20 @@ def read_my_progress(
     """
     progress = crud_progress.get_by_user(db, user_id=current_user.id)
     return progress
+
+@router.get("/{user_id}", response_model=List[Progress])
+def read_user_progress(
+    user_id: int,
+    db: Session = Depends(deps.get_db),
+    current_user: User = Depends(deps.get_current_user),
+) -> Any:
+    """
+    Get progress history of a specific user.
+    """
+    if current_user.id != user_id and current_user.role != "coach":
+        # Usually 403 Forbidden is better for permissions, but 400 is fine if consistent
+        raise HTTPException(
+            status_code=403, detail="The user doesn't have enough privileges"
+        )
+    progress = crud_progress.get_by_user(db, user_id=user_id)
+    return progress

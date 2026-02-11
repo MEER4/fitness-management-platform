@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import api from '../services/api';
 import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 const Progress = () => {
     const [weight, setWeight] = useState('');
@@ -8,8 +10,6 @@ const Progress = () => {
     const [notes, setNotes] = useState('');
     const [history, setHistory] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState('');
-    const [successMsg, setSuccessMsg] = useState('');
     const navigate = useNavigate();
 
     const fetchHistory = async () => {
@@ -18,7 +18,7 @@ const Progress = () => {
             setHistory(response.data);
         } catch (err) {
             console.error("Error fetching progress", err);
-            setError("Could not load progress history.");
+            toast.error("Could not load progress history.");
         } finally {
             setLoading(false);
         }
@@ -30,8 +30,6 @@ const Progress = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setError('');
-        setSuccessMsg('');
 
         try {
             await api.post('/progress/', {
@@ -39,14 +37,14 @@ const Progress = () => {
                 body_fat: parseFloat(bodyFat),
                 notes: notes
             });
-            setSuccessMsg('Progress logged successfully!');
+            toast.success('Progress logged successfully!');
             setWeight('');
             setBodyFat('');
             setNotes('');
             fetchHistory(); // Refresh list
         } catch (err) {
             console.error("Error logging progress", err);
-            setError("Failed to log progress. Please try again.");
+            toast.error("Failed to log progress.");
         }
     };
 
@@ -66,8 +64,6 @@ const Progress = () => {
                     {/* Form Section */}
                     <div className="bg-white p-6 rounded-lg shadow-md">
                         <h2 className="text-xl font-semibold mb-4">Log New Entry</h2>
-                        {successMsg && <div className="bg-green-100 text-green-700 p-3 rounded mb-4">{successMsg}</div>}
-                        {error && <div className="bg-red-100 text-red-700 p-3 rounded mb-4">{error}</div>}
 
                         <form onSubmit={handleSubmit}>
                             <div className="mb-4">
@@ -115,7 +111,7 @@ const Progress = () => {
                     <div className="bg-white p-6 rounded-lg shadow-md">
                         <h2 className="text-xl font-semibold mb-4">History</h2>
                         {loading ? (
-                            <p className="text-gray-500">Loading history...</p>
+                            <LoadingSpinner />
                         ) : history.length === 0 ? (
                             <p className="text-gray-500">No progress logs yet.</p>
                         ) : (

@@ -18,3 +18,6 @@ def create_user(db: Session, user: UserCreate):
     db.commit()
     db.refresh(db_user)
     return db_user
+
+def get_users_by_role(db: Session, role: str, skip: int = 0, limit: int = 100):
+    return db.query(User).filter(User.role == role).offset(skip).limit(limit).all()

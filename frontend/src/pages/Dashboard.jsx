@@ -1,13 +1,18 @@
 import { useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 const Dashboard = () => {
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
 
     if (!user) {
-        return <div className="p-8 text-center">Loading user profile...</div>;
+        return (
+            <div className="flex justify-center items-center h-screen bg-gray-50">
+                <LoadingSpinner />
+            </div>
+        );
     }
 
     return (
@@ -44,7 +49,7 @@ const Dashboard = () => {
                             <p>• User Test (Active)</p>
                             <p>• Client Demo (Pending)</p>
                         </div>
-                        <button className="mt-4 text-purple-600 font-medium hover:underline">View All Clients &rarr;</button>
+                        <button onClick={() => navigate('/clients')} className="mt-4 text-purple-600 font-medium hover:underline">View All Clients &rarr;</button>
                     </div>
                 </div>
             ) : (
