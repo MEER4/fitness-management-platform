@@ -1,0 +1,51 @@
+{
+    "navbar": {
+        "dashboard": "Panel de Control",
+        "my_clients": "Mis Clientes",
+        "my_plans": "Mis Planes",
+        "requests": "Solicitudes",
+        "my_workouts": "Mis Rutinas",
+        "my_plan": "Mi Plan",
+        "browse_plans": "Explorar Planes",
+        "progress": "Progreso",
+        "profile": "Perfil",
+        "logout": "Cerrar Sesión"
+    },
+    "dashboard": {
+        "welcome": "Bienvenido de nuevo",
+        "my_plans": "Mis Planes",
+        "manage_plans": "Gestiona tus planes de fitness y membresías.",
+        "view_plans": "Ver Planes",
+        "create_workout": "Crear Rutina",
+        "build_workouts": "Crea rutinas de ejercicio y ejercicios.",
+        "go_to_workouts": "Ir a Rutinas",
+        "my_clients": "Mis Clientes",
+        "manage_users": "Gestiona usuarios y asigna rutinas.",
+        "view_all_clients": "Ver Todos los Clientes",
+        "pending_requests": "Solicitudes Pendientes",
+        "approve_requests": "Aprobar solicitudes de suscripción de clientes.",
+        "view_requests": "Ver Solicitudes",
+        "my_current_plan": "Mi Plan Actual",
+        "view_plan_details": "Ver Detalles del Plan",
+        "todays_workout": "Rutina de Hoy",
+        "start_workout": "Iniciar Rutina",
+        "track_progress": "Seguimiento de Progreso",
+        "log_progress_desc": "Registra tu peso, grasa corporal y notas.",
+        "log_progress": "Registrar Progreso",
+        "active_clients": "Clientes Activos",
+        "plans_created": "Planes Creados",
+        "workouts_completed": "Rutinas Completadas",
+        "current_streak": "Racha Actual"
+    },
+    "auth": {
+        "login": "Iniciar Sesión",
+        "login_title": "Inicia sesión en tu cuenta",
+        "register": "Registrarse",
+        "email": "Correo Electrónico",
+        "password": "Contraseña",
+        "confirm_password": "Confirmar Contraseña",
+        "submit": "Enviar",
+        "logging_in": "Iniciando sesión...",
+        "failed": "Error al iniciar sesión. Por favor verifica tus credenciales."
+    }
+}

@@ -1,0 +1,51 @@
+{
+    "navbar": {
+        "dashboard": "Dashboard",
+        "my_clients": "My Clients",
+        "my_plans": "My Plans",
+        "requests": "Requests",
+        "my_workouts": "My Workouts",
+        "my_plan": "My Plan",
+        "browse_plans": "Browse Plans",
+        "progress": "Progress",
+        "profile": "Profile",
+        "logout": "Logout"
+    },
+    "dashboard": {
+        "welcome": "Welcome back",
+        "my_plans": "My Plans",
+        "manage_plans": "Manage your fitness plans and memberships.",
+        "view_plans": "View Plans",
+        "create_workout": "Create Workout",
+        "build_workouts": "Build workout routines and exercises.",
+        "go_to_workouts": "Go to Workouts",
+        "my_clients": "My Clients",
+        "manage_users": "Manage users and assign routines.",
+        "view_all_clients": "View All Clients",
+        "pending_requests": "Pending Requests",
+        "approve_requests": "Approve client subscription requests.",
+        "view_requests": "View Requests",
+        "my_current_plan": "My Current Plan",
+        "view_plan_details": "View Plan Details",
+        "todays_workout": "Today's Workout",
+        "start_workout": "Start Workout",
+        "track_progress": "Track Progress",
+        "log_progress_desc": "Log your weight, body fat, and notes.",
+        "log_progress": "Log Progress",
+        "active_clients": "Active Clients",
+        "plans_created": "Plans Created",
+        "workouts_completed": "Workouts Completed",
+        "current_streak": "Current Streak"
+    },
+    "auth": {
+        "login": "Login",
+        "login_title": "Login to your account",
+        "register": "Register",
+        "email": "Email",
+        "password": "Password",
+        "confirm_password": "Confirm Password",
+        "submit": "Submit",
+        "logging_in": "Logging in...",
+        "failed": "Login failed. Please check your credentials."
+    }
+}

@@ -3,10 +3,12 @@ import { AuthContext } from '../context/AuthContext';
 import { ThemeContext } from '../context/ThemeContext';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { SunIcon, MoonIcon, Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid';
+import { useTranslation } from 'react-i18next';
 
 const Navbar = () => {
     const { user, logout } = useContext(AuthContext);
     const { theme, toggleTheme } = useContext(ThemeContext);
+    const { t, i18n } = useTranslation();
     const navigate = useNavigate();
     const location = useLocation();
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -15,22 +17,28 @@ const Navbar = () => {
 
     const isActive = (path) => location.pathname === path;
 
+    const toggleLanguage = () => {
+        // Check if current language starts with 'en' (e.g., 'en', 'en-US', 'en-GB')
+        const currentLang = i18n.language || 'en';
+        const isEnglish = currentLang.startsWith('en');
+        const newLang = isEnglish ? 'es' : 'en';
+        i18n.changeLanguage(newLang);
+    };
+
     const navLinks = [
-        { name: 'Dashboard', path: '/' },
-        { name: 'Progress', path: '/progress' },
-        { name: 'Profile', path: '/profile' },
+        { name: t('navbar.dashboard'), path: '/' },
+        { name: t('navbar.progress'), path: '/progress' },
+        { name: t('navbar.profile'), path: '/profile' },
     ];
 
     if (user.role === 'coach') {
-        // Insert 'My Clients' after Dashboard
-        navLinks.splice(1, 0, { name: 'My Clients', path: '/clients' });
-        // Add Coach Plans?
-        navLinks.splice(2, 0, { name: 'My Plans', path: '/coach-plans' });
-        navLinks.splice(3, 0, { name: 'Requests', path: '/pending-requests' });
+        navLinks.splice(1, 0, { name: t('navbar.my_clients'), path: '/clients' });
+        navLinks.splice(2, 0, { name: t('navbar.my_plans'), path: '/coach-plans' });
+        navLinks.splice(3, 0, { name: t('navbar.requests'), path: '/pending-requests' });
     } else {
-        navLinks.splice(1, 0, { name: 'My Workouts', path: '/my-workouts' });
-        navLinks.splice(2, 0, { name: 'My Plan', path: '/my-plan' });
-        navLinks.splice(3, 0, { name: 'Browse Plans', path: '/browse-plans' });
+        navLinks.splice(1, 0, { name: t('navbar.my_workouts'), path: '/my-workouts' });
+        navLinks.splice(2, 0, { name: t('navbar.my_plan'), path: '/my-plan' });
+        navLinks.splice(3, 0, { name: t('navbar.browse_plans'), path: '/browse-plans' });
     }
 
     const handleNavigation = (path) => {
@@ -69,6 +77,13 @@ const Navbar = () => {
 
                     <div className="flex items-center space-x-4">
                         <button
+                            onClick={toggleLanguage}
+                            className="p-2 rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none transition-colors font-bold"
+                            title="Switch Language"
+                        >
+                            {(i18n.language && i18n.language.startsWith('en')) ? 'ES' : 'EN'}
+                        </button>
+                        <button
                             onClick={toggleTheme}
                             className="p-2 rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none transition-colors"
                         >
@@ -91,7 +106,7 @@ const Navbar = () => {
                                 }}
                                 className="text-gray-500 hover:text-red-600 dark:text-gray-400 dark:hover:text-red-400 text-sm font-medium transition-colors"
                             >
-                                Logout
+                                {t('navbar.logout')}
                             </button>
                         </div>
 
@@ -130,11 +145,19 @@ const Navbar = () => {
                             </button>
                         ))}
                         <div className="border-t border-gray-200 dark:border-gray-700 pt-4 pb-3">
-                            <div className="flex items-center px-5">
-                                <div className="ml-3">
-                                    <div className="text-base font-medium leading-none text-gray-800 dark:text-white">{user.name || user.email}</div>
-                                    <div className="text-sm font-medium leading-none text-gray-500 dark:text-gray-400 mt-1 capitalize">{user.role}</div>
+                            <div className="flex items-center px-5 justify-between">
+                                <div className="flex items-center">
+                                    <div className="ml-3">
+                                        <div className="text-base font-medium leading-none text-gray-800 dark:text-white">{user.name || user.email}</div>
+                                        <div className="text-sm font-medium leading-none text-gray-500 dark:text-gray-400 mt-1 capitalize">{user.role}</div>
+                                    </div>
                                 </div>
+                                <button
+                                    onClick={toggleLanguage}
+                                    className="p-2 rounded-full text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 font-bold"
+                                >
+                                    {(i18n.language && i18n.language.startsWith('en')) ? 'ES' : 'EN'}
+                                </button>
                             </div>
                             <div className="mt-3 px-2 space-y-1">
                                 <button
@@ -144,7 +167,7 @@ const Navbar = () => {
                                     }}
                                     className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-500 hover:text-red-600 dark:text-gray-400 dark:hover:text-red-400 hover:bg-gray-100 dark:hover:bg-gray-800"
                                 >
-                                    Logout
+                                    {t('navbar.logout')}
                                 </button>
                             </div>
                         </div>
