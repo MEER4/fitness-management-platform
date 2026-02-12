@@ -47,5 +47,109 @@
         "submit": "Enviar",
         "logging_in": "Iniciando sesión...",
         "failed": "Error al iniciar sesión. Por favor verifica tus credenciales."
+    },
+    "progress": {
+        "title": "Seguimiento de Progreso",
+        "log_new": "Registrar Nueva Entrada",
+        "weight": "Peso (kg)",
+        "body_fat": "Grasa Corporal (%)",
+        "notes": "Notas",
+        "notes_placeholder": "¿Cómo te sientes?",
+        "save": "Guardar Progreso",
+        "history": "Historial",
+        "no_logs": "Aún no hay registros de progreso.",
+        "success": "¡Progreso registrado con éxito!",
+        "error_fetch": "No se pudo cargar el historial de progreso.",
+        "error_log": "Error al registrar el progreso."
+    },
+    "create_workout": {
+        "title": "Crear Nueva Rutina",
+        "workout_title": "Título de la Rutina",
+        "workout_title_placeholder": "ej. Quemagrasa Total",
+        "difficulty": "Nivel de Dificultad",
+        "beginner": "Principiante",
+        "intermediate": "Intermedio",
+        "advanced": "Avanzado",
+        "exercises": "Ejercicios",
+        "add_exercise": "Agregar Ejercicio",
+        "exercise_name": "Nombre del Ejercicio",
+        "sets": "Series",
+        "reps": "Repeticiones",
+        "cancel": "Cancelar",
+        "save": "Crear Rutina",
+        "saving": "Guardando...",
+        "success": "¡Rutina creada con éxito!",
+        "error": "Error al crear la rutina"
+    },
+    "profile": {
+        "title": "Editar Perfil",
+        "full_name": "Nombre Completo",
+        "email": "Correo Electrónico",
+        "email_note": "Cambiar el correo podría requerir volver a iniciar sesión (no implementado).",
+        "new_password": "Nueva Contraseña (opcional)",
+        "password_placeholder": "Dejar en blanco para mantener la actual",
+        "save": "Guardar Cambios",
+        "saving": "Guardando Cambios...",
+        "success": "¡Perfil actualizado con éxito!",
+        "error": "Error al actualizar"
+    },
+    "clients": {
+        "title": "Mis Clientes",
+        "no_clients": "No se encontraron clientes.",
+        "unnamed": "Cliente Sin Nombre",
+        "active": "Activo",
+        "assign_workout": "Asignar Rutina",
+        "view_progress": "Ver Progreso",
+        "error_load": "No se pudieron cargar los clientes."
+    },
+    "coach_plans": {
+        "title": "Mis Planes",
+        "create_new": "Crear Nuevo Plan",
+        "duration": "Duración: {{count}} meses",
+        "edit": "Editar",
+        "delete": "Eliminar",
+        "no_plans": "Aún no has creado ningún plan.",
+        "delete_confirm": "¿Estás seguro de que deseas eliminar este plan?",
+        "delete_success": "Plan eliminado con éxito.",
+        "error_load": "Error al cargar los planes.",
+        "error_delete": "Error al eliminar el plan."
+    },
+    "pending_requests": {
+        "title": "Solicitudes de Plan Pendientes",
+        "no_requests": "No hay solicitudes pendientes.",
+        "user_id": "ID de Usuario: {{id}}",
+        "plan_id": "ID de Plan Solicitado: {{id}}",
+        "date": "Fecha: {{date}}",
+        "approve": "Aprobar",
+        "reject": "Rechazar",
+        "approve_success": "¡Solicitud aprobada!",
+        "approve_error": "Error al aprobar la solicitud.",
+        "reject_success": "Solicitud rechazada.",
+        "reject_error": "Error al rechazar la solicitud."
+    },
+    "my_workouts": {
+        "title": "Mis Rutinas Asignadas",
+        "no_workouts": "No se te han asignado rutinas todavía.",
+        "ask_coach": "¡Pídele a tu entrenador que te asigne un plan!",
+        "assigned": "Asignado: {{date}}",
+        "instructions": "Descripción/Instrucciones:",
+        "start": "Iniciar Rutina"
+    },
+    "my_plan": {
+        "title": "Mi Plan Activo",
+        "no_active": "Sin Plan Activo",
+        "no_active_desc": "No tienes ninguna suscripción activa actualmente.",
+        "browse": "Explorar Planes",
+        "active_badge": "ACTIVO",
+        "unknown": "Plan Desconocido",
+        "price": "Precio",
+        "renews": "Renueva el"
+    },
+    "browse_plans": {
+        "title": "Planes Disponibles",
+        "duration": "Duración: {{count}} días",
+        "request": "Solicitar Plan",
+        "request_success": "¡Plan solicitado! Esperando aprobación del entrenador.",
+        "request_error": "Error al solicitar el plan."
     }
 }

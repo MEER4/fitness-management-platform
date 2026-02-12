@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import api from '../services/api';
 import Navbar from '../components/Navbar';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { useNavigate } from 'react-router-dom';
 
 const MyWorkouts = () => {
+    const { t } = useTranslation();
     const [userWorkouts, setUserWorkouts] = useState([]);
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
@@ -30,12 +32,12 @@ const MyWorkouts = () => {
         <div className="min-h-screen bg-gray-50 dark:bg-[#0a0a0a] transition-colors duration-300">
             <Navbar />
             <div className="p-8 max-w-5xl mx-auto">
-                <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">My Assigned Workouts</h1>
+                <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">{t('my_workouts.title')}</h1>
 
                 {userWorkouts.length === 0 ? (
                     <div className="bg-white dark:bg-[#171717] p-6 rounded-lg shadow-md text-center border dark:border-gray-800">
-                        <p className="text-gray-500 dark:text-gray-400 mb-4">You haven't been assigned any workouts yet.</p>
-                        <p className="text-sm text-gray-400 dark:text-gray-500">Ask your coach to assign a plan!</p>
+                        <p className="text-gray-500 dark:text-gray-400 mb-4">{t('my_workouts.no_workouts')}</p>
+                        <p className="text-sm text-gray-400 dark:text-gray-500">{t('my_workouts.ask_coach')}</p>
                     </div>
                 ) : (
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -53,10 +55,10 @@ const MyWorkouts = () => {
                                             {workout.level.toUpperCase()}
                                         </span>
                                     </div>
-                                    <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">Assigned: {new Date(uw.assigned_at).toLocaleDateString()}</p>
+                                    <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">{t('my_workouts.assigned', { date: new Date(uw.assigned_at).toLocaleDateString() })}</p>
 
                                     <div className="mb-4">
-                                        <h4 className="font-semibold text-gray-700 dark:text-gray-300 text-sm mb-1">Description/Instructions:</h4>
+                                        <h4 className="font-semibold text-gray-700 dark:text-gray-300 text-sm mb-1">{t('my_workouts.instructions')}</h4>
                                         <p className="text-gray-600 dark:text-gray-400 text-sm whitespace-pre-line">{workout.description}</p>
                                     </div>
 
@@ -65,7 +67,7 @@ const MyWorkouts = () => {
                                     // For MVP, we can just show details here or navigate if complex. 
                                     // Since description contains exercises formatted, we displaying it above.
                                     >
-                                        Start Workout
+                                        {t('my_workouts.start')}
                                     </button>
                                 </div>
                             )

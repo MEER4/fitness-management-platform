@@ -47,5 +47,109 @@
         "submit": "Submit",
         "logging_in": "Logging in...",
         "failed": "Login failed. Please check your credentials."
+    },
+    "progress": {
+        "title": "Track Progress",
+        "log_new": "Log New Entry",
+        "weight": "Weight (kg)",
+        "body_fat": "Body Fat (%)",
+        "notes": "Notes",
+        "notes_placeholder": "How are you feeling?",
+        "save": "Save Progress",
+        "history": "History",
+        "no_logs": "No progress logs yet.",
+        "success": "Progress logged successfully!",
+        "error_fetch": "Could not load progress history.",
+        "error_log": "Failed to log progress."
+    },
+    "create_workout": {
+        "title": "Create New Workout",
+        "workout_title": "Workout Title",
+        "workout_title_placeholder": "e.g. Full Body Blast",
+        "difficulty": "Difficulty Level",
+        "beginner": "Beginner",
+        "intermediate": "Intermediate",
+        "advanced": "Advanced",
+        "exercises": "Exercises",
+        "add_exercise": "Add Exercise",
+        "exercise_name": "Exercise Name",
+        "sets": "Sets",
+        "reps": "Reps",
+        "cancel": "Cancel",
+        "save": "Create Workout",
+        "saving": "Saving...",
+        "success": "Workout created successfully!",
+        "error": "Failed to create workout"
+    },
+    "profile": {
+        "title": "Edit Profile",
+        "full_name": "Full Name",
+        "email": "Email",
+        "email_note": "Changing email might require re-login (not implemented).",
+        "new_password": "New Password (optional)",
+        "password_placeholder": "Leave blank to keep current",
+        "save": "Save Changes",
+        "saving": "Saving Changes...",
+        "success": "Profile updated successfully!",
+        "error": "Update failed"
+    },
+    "clients": {
+        "title": "My Clients",
+        "no_clients": "No clients found.",
+        "unnamed": "Unnamed Client",
+        "active": "Active",
+        "assign_workout": "Assign Workout",
+        "view_progress": "View Progress",
+        "error_load": "Could not load clients."
+    },
+    "coach_plans": {
+        "title": "My Plans",
+        "create_new": "Create New Plan",
+        "duration": "Duration: {{count}} months",
+        "edit": "Edit",
+        "delete": "Delete",
+        "no_plans": "You haven't created any plans yet.",
+        "delete_confirm": "Are you sure you want to delete this plan?",
+        "delete_success": "Plan deleted successfully.",
+        "error_load": "Failed to load plans.",
+        "error_delete": "Failed to delete plan."
+    },
+    "pending_requests": {
+        "title": "Pending Plan Requests",
+        "no_requests": "No pending requests.",
+        "user_id": "User ID: {{id}}",
+        "plan_id": "Requested Plan ID: {{id}}",
+        "date": "Date: {{date}}",
+        "approve": "Approve",
+        "reject": "Reject",
+        "approve_success": "Request approved!",
+        "approve_error": "Failed to approve request.",
+        "reject_success": "Request rejected.",
+        "reject_error": "Failed to reject request."
+    },
+    "my_workouts": {
+        "title": "My Assigned Workouts",
+        "no_workouts": "You haven't been assigned any workouts yet.",
+        "ask_coach": "Ask your coach to assign a plan!",
+        "assigned": "Assigned: {{date}}",
+        "instructions": "Description/Instructions:",
+        "start": "Start Workout"
+    },
+    "my_plan": {
+        "title": "My Active Plan",
+        "no_active": "No Active Plan",
+        "no_active_desc": "You don't have any active subscriptions properly.",
+        "browse": "Browse Plans",
+        "active_badge": "ACTIVE",
+        "unknown": "Unknown Plan",
+        "price": "Price",
+        "renews": "Renews On"
+    },
+    "browse_plans": {
+        "title": "Available Plans",
+        "duration": "Duration: {{count}} days",
+        "request": "Request Plan",
+        "request_success": "Plan requested! Waiting for coach approval.",
+        "request_error": "Failed to request plan."
     }
 }

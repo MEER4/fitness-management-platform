@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import api from '../services/api';
 import Navbar from '../components/Navbar';
 import LoadingSpinner from '../components/LoadingSpinner';
 import toast from 'react-hot-toast';
 
 const BrowsePlans = () => {
+    const { t } = useTranslation();
     const [plans, setPlans] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -25,10 +27,10 @@ const BrowsePlans = () => {
     const handleRequestPlan = async (planId) => {
         try {
             await api.post('/subscriptions/request', { plan_id: planId });
-            toast.success("Plan requested! Waiting for coach approval.");
+            toast.success(t('browse_plans.request_success'));
         } catch (error) {
             console.error("Error requesting plan", error);
-            toast.error("Failed to request plan.");
+            toast.error(t('browse_plans.request_error'));
         }
     };
 
@@ -38,7 +40,7 @@ const BrowsePlans = () => {
         <div className="min-h-screen bg-gray-50 dark:bg-[#0a0a0a] transition-colors duration-300">
             <Navbar />
             <div className="p-8 max-w-6xl mx-auto">
-                <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">Available Plans</h1>
+                <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">{t('browse_plans.title')}</h1>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {plans.map(plan => (
@@ -47,13 +49,13 @@ const BrowsePlans = () => {
                             <p className="text-3xl font-bold text-blue-600 dark:text-[#d4af37] mb-4">${plan.price}</p>
                             <div className="flex-grow">
                                 <p className="text-gray-600 dark:text-gray-400 mb-4 whitespace-pre-line">{plan.description}</p>
-                                <p className="text-sm text-gray-500 dark:text-gray-500 mb-6">Duration: {plan.duration} days</p>
+                                <p className="text-sm text-gray-500 dark:text-gray-500 mb-6">{t('browse_plans.duration', { count: plan.duration })}</p>
                             </div>
                             <button
                                 onClick={() => handleRequestPlan(plan.id)}
                                 className="w-full bg-blue-600 dark:bg-[#d4af37] text-white dark:text-black font-semibold py-2 rounded hover:bg-blue-700 dark:hover:bg-[#b5952f] transition-colors"
                             >
-                                Request Plan
+                                {t('browse_plans.request')}
                             </button>
                         </div>
                     ))}

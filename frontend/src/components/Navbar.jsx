@@ -18,11 +18,14 @@ const Navbar = () => {
     const isActive = (path) => location.pathname === path;
 
     const toggleLanguage = () => {
-        // Check if current language starts with 'en' (e.g., 'en', 'en-US', 'en-GB')
         const currentLang = i18n.language || 'en';
-        const isEnglish = currentLang.startsWith('en');
-        const newLang = isEnglish ? 'es' : 'en';
-        i18n.changeLanguage(newLang);
+        const newLang = currentLang.startsWith('en') ? 'es' : 'en';
+        console.log(`[Navbar] Toggling language from ${currentLang} to ${newLang}`);
+        i18n.changeLanguage(newLang).then(() => {
+            console.log(`[Navbar] Language successfully changed to ${newLang}`);
+        }).catch((err) => {
+            console.error('[Navbar] Error changing language:', err);
+        });
     };
 
     const navLinks = [

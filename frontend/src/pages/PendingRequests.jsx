@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import api from '../services/api';
 import Navbar from '../components/Navbar';
 import LoadingSpinner from '../components/LoadingSpinner';
 import toast from 'react-hot-toast';
 
 const PendingRequests = () => {
+    const { t } = useTranslation();
     const [requests, setRequests] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -26,20 +28,20 @@ const PendingRequests = () => {
     const handleApprove = async (id) => {
         try {
             await api.post(`/subscriptions/${id}/approve`);
-            toast.success("Request approved!");
+            toast.success(t('pending_requests.approve_success'));
             fetchRequests();
         } catch (error) {
-            toast.error("Failed to approve request.");
+            toast.error(t('pending_requests.approve_error'));
         }
     };
 
     const handleReject = async (id) => {
         try {
             await api.post(`/subscriptions/${id}/reject`);
-            toast.success("Request rejected.");
+            toast.success(t('pending_requests.reject_success'));
             fetchRequests();
         } catch (error) {
-            toast.error("Failed to reject request.");
+            toast.error(t('pending_requests.reject_error'));
         }
     };
 
@@ -49,11 +51,11 @@ const PendingRequests = () => {
         <div className="min-h-screen bg-gray-50 dark:bg-[#0a0a0a] transition-colors duration-300">
             <Navbar />
             <div className="p-8 max-w-4xl mx-auto">
-                <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">Pending Plan Requests</h1>
+                <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">{t('pending_requests.title')}</h1>
 
                 {requests.length === 0 ? (
                     <div className="bg-white dark:bg-[#171717] p-6 rounded-lg shadow-md text-center border dark:border-gray-800">
-                        <p className="text-gray-500 dark:text-gray-400">No pending requests.</p>
+                        <p className="text-gray-500 dark:text-gray-400">{t('pending_requests.no_requests')}</p>
                     </div>
                 ) : (
                     <div className="space-y-4">
@@ -63,22 +65,22 @@ const PendingRequests = () => {
                                     {/* Assuming user relationship is loaded, backend might need to ensure eager loading or join */}
                                     {/* The schema defined earlier 'Subscription' has 'plan' optional, but user? */}
                                     {/* Let's assume we need to fetch user details or schema includes user_id. Display ID if name not avail */}
-                                    <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-100">User ID: {req.user_id}</h3>
-                                    <p className="text-gray-600 dark:text-gray-400">Requested Plan ID: {req.plan_id}</p>
-                                    <p className="text-sm text-gray-500 dark:text-gray-500">Date: {new Date(req.start_date || Date.now()).toLocaleDateString()}</p>
+                                    <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-100">{t('pending_requests.user_id', { id: req.user_id })}</h3>
+                                    <p className="text-gray-600 dark:text-gray-400">{t('pending_requests.plan_id', { id: req.plan_id })}</p>
+                                    <p className="text-sm text-gray-500 dark:text-gray-500">{t('pending_requests.date', { date: new Date(req.start_date || Date.now()).toLocaleDateString() })}</p>
                                 </div>
                                 <div className="flex space-x-3">
                                     <button
                                         onClick={() => handleApprove(req.id)}
                                         className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors"
                                     >
-                                        Approve
+                                        {t('pending_requests.approve')}
                                     </button>
                                     <button
                                         onClick={() => handleReject(req.id)}
                                         className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition-colors"
                                     >
-                                        Reject
+                                        {t('pending_requests.reject')}
                                     </button>
                                 </div>
                             </div>

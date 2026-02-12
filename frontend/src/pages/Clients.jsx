@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import api from '../services/api';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
@@ -8,6 +9,7 @@ import Navbar from '../components/Navbar';
 import AssignWorkoutModal from '../components/AssignWorkoutModal';
 
 const Clients = () => {
+    const { t } = useTranslation();
     const [clients, setClients] = useState([]);
     const [loading, setLoading] = useState(true);
     const [assigningClient, setAssigningClient] = useState(null);
@@ -20,7 +22,7 @@ const Clients = () => {
                 setClients(response.data);
             } catch (error) {
                 console.error("Error fetching clients", error);
-                toast.error("Could not load clients.");
+                toast.error(t('clients.error_load'));
             } finally {
                 setLoading(false);
             }
@@ -40,10 +42,10 @@ const Clients = () => {
         <div className="min-h-screen bg-gray-50 dark:bg-[#0a0a0a] transition-colors duration-300">
             <Navbar />
             <div className="p-4 md:p-8 max-w-7xl mx-auto">
-                <h1 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">My Clients</h1>
+                <h1 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">{t('clients.title')}</h1>
 
                 {clients.length === 0 ? (
-                    <p className="text-gray-500 dark:text-gray-400">No clients found.</p>
+                    <p className="text-gray-500 dark:text-gray-400">{t('clients.no_clients')}</p>
                 ) : (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {clients.map(client => (
@@ -58,12 +60,12 @@ const Clients = () => {
                                             {client.name ? client.name.charAt(0).toUpperCase() : client.email.charAt(0).toUpperCase()}
                                         </div>
                                         <div>
-                                            <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100">{client.name || "Unnamed Client"}</h3>
+                                            <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100">{client.name || t('clients.unnamed')}</h3>
                                             <p className="text-gray-500 dark:text-gray-400 text-sm">{client.email}</p>
                                         </div>
                                     </div>
                                     <div className="mb-4">
-                                        <span className="text-sm bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400 px-2 py-1 rounded">Active</span>
+                                        <span className="text-sm bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400 px-2 py-1 rounded">{t('clients.active')}</span>
                                     </div>
                                 </div>
                                 <div className="flex justify-between items-center border-t dark:border-gray-700 pt-4">
@@ -71,9 +73,9 @@ const Clients = () => {
                                         onClick={(e) => handleAssignClick(e, client)}
                                         className="text-white bg-blue-600 hover:bg-blue-700 dark:bg-[#d4af37] dark:hover:bg-[#b5952f] dark:text-black font-semibold px-3 py-1 rounded-md text-sm transition-colors"
                                     >
-                                        Assign Workout
+                                        {t('clients.assign_workout')}
                                     </button>
-                                    <span className="text-blue-600 dark:text-[#d4af37] text-sm font-medium hover:underline">View Progress &rarr;</span>
+                                    <span className="text-blue-600 dark:text-[#d4af37] text-sm font-medium hover:underline">{t('clients.view_progress')} &rarr;</span>
                                 </div>
                             </div>
                         ))}
