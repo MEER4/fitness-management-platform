@@ -44,9 +44,9 @@ const CoachPlans = () => {
     return (
         <div className="min-h-screen bg-gray-50 dark:bg-[#0a0a0a] transition-colors duration-300">
             <Navbar />
-            <div className="p-8 max-w-6xl mx-auto">
+            <div className="p-4 md:p-8 max-w-6xl mx-auto">
                 <div className="flex justify-between items-center mb-6">
-                    <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100">My Plans</h1>
+                    <h1 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100">My Plans</h1>
                     <button
                         onClick={() => navigate('/create-plan')}
                         className="bg-blue-600 dark:bg-[#d4af37] text-white dark:text-black font-semibold px-4 py-2 rounded hover:bg-blue-700 dark:hover:bg-[#b5952f] transition-colors"

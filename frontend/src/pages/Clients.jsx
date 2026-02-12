@@ -39,8 +39,8 @@ const Clients = () => {
     return (
         <div className="min-h-screen bg-gray-50 dark:bg-[#0a0a0a] transition-colors duration-300">
             <Navbar />
-            <div className="p-8">
-                <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">My Clients</h1>
+            <div className="p-4 md:p-8 max-w-7xl mx-auto">
+                <h1 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">My Clients</h1>
 
                 {clients.length === 0 ? (
                     <p className="text-gray-500 dark:text-gray-400">No clients found.</p>
