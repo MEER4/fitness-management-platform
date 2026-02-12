@@ -27,8 +27,8 @@ const Navbar = () => {
                             <button
                                 onClick={() => navigate('/')}
                                 className={`px-3 py-2 rounded-md text-sm font-medium ${isActive('/')
-                                        ? 'bg-blue-100 text-blue-700'
-                                        : 'text-gray-600 hover:bg-gray-100'
+                                    ? 'bg-blue-100 text-blue-700'
+                                    : 'text-gray-600 hover:bg-gray-100'
                                     }`}
                             >
                                 Dashboard
@@ -38,8 +38,8 @@ const Navbar = () => {
                                 <button
                                     onClick={() => navigate('/clients')}
                                     className={`px-3 py-2 rounded-md text-sm font-medium ${isActive('/clients') || location.pathname.startsWith('/clients/')
-                                            ? 'bg-blue-100 text-blue-700'
-                                            : 'text-gray-600 hover:bg-gray-100'
+                                        ? 'bg-blue-100 text-blue-700'
+                                        : 'text-gray-600 hover:bg-gray-100'
                                         }`}
                                 >
                                     My Clients
@@ -49,11 +49,20 @@ const Navbar = () => {
                             <button
                                 onClick={() => navigate('/progress')}
                                 className={`px-3 py-2 rounded-md text-sm font-medium ${isActive('/progress')
-                                        ? 'bg-blue-100 text-blue-700'
-                                        : 'text-gray-600 hover:bg-gray-100'
+                                    ? 'bg-blue-100 text-blue-700'
+                                    : 'text-gray-600 hover:bg-gray-100'
                                     }`}
                             >
                                 Progress
+                            </button>
+                            <button
+                                onClick={() => navigate('/profile')}
+                                className={`px-3 py-2 rounded-md text-sm font-medium ${isActive('/profile')
+                                    ? 'bg-blue-100 text-blue-700'
+                                    : 'text-gray-600 hover:bg-gray-100'
+                                    }`}
+                            >
+                                Profile
                             </button>
                         </div>
                     </div>

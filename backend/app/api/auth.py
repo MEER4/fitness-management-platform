@@ -61,3 +61,17 @@ def read_clients(
         )
     users = crud_user.get_users_by_role(db, role="client", skip=skip, limit=limit)
     return users
+
+from app.schemas.user import UserUpdate
+@router.put("/me", response_model=User)
+def update_user_me(
+    *,
+    db: Session = Depends(deps.get_db),
+    user_in: UserUpdate,
+    current_user: User = Depends(deps.get_current_user),
+) -> Any:
+    """
+    Update own user.
+    """
+    user = crud_user.update_user(db, db_user=current_user, user_in=user_in)
+    return user

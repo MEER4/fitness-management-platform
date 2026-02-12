@@ -10,8 +10,11 @@ class UserBase(BaseModel):
 class UserCreate(UserBase):
     password: str
 
-class UserUpdate(UserBase):
+class UserUpdate(BaseModel):
+    email: Optional[EmailStr] = None
+    name: Optional[str] = None
     password: Optional[str] = None
+    role: Optional[UserRole] = None
 
 class UserInDBBase(UserBase):
     id: Optional[int] = None

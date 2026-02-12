@@ -17,5 +17,7 @@ class UserWorkoutInDBBase(UserWorkoutBase):
     class Config:
         from_attributes = True
 
+from app.schemas.workout import Workout
+
 class UserWorkout(UserWorkoutInDBBase):
-    pass
+    workout: Optional[Workout] = None

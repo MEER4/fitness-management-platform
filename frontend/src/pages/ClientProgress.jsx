@@ -52,8 +52,8 @@ const ClientProgress = () => {
                                     <p className="text-gray-500 text-sm">{new Date(entry.date).toLocaleDateString()}</p>
                                     <div className="flex gap-4 mt-1">
                                         <p className="font-semibold text-gray-800">Weight: <span className="text-blue-600">{entry.weight} kg</span></p>
-                                        {entry.body_fat_percentage && (
-                                            <p className="font-semibold text-gray-800">Body Fat: <span className="text-orange-600">{entry.body_fat_percentage}%</span></p>
+                                        {entry.body_fat && (
+                                            <p className="font-semibold text-gray-800">Body Fat: <span className="text-orange-600">{entry.body_fat}%</span></p>
                                         )}
                                     </div>
                                     {entry.notes && <p className="text-gray-600 italic mt-2 text-sm">"{entry.notes}"</p>}

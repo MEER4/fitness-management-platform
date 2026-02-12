@@ -5,9 +5,12 @@ import toast from 'react-hot-toast';
 import LoadingSpinner from '../components/LoadingSpinner';
 import Navbar from '../components/Navbar';
 
+import AssignWorkoutModal from '../components/AssignWorkoutModal';
+
 const Clients = () => {
     const [clients, setClients] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [assigningClient, setAssigningClient] = useState(null);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -26,6 +29,11 @@ const Clients = () => {
         fetchClients();
     }, []);
 
+    const handleAssignClick = (e, client) => {
+        e.stopPropagation();
+        setAssigningClient(client);
+    };
+
     if (loading) return <div className="flex justify-center p-10"><LoadingSpinner /></div>;
 
     return (
@@ -42,24 +50,41 @@ const Clients = () => {
                             <div
                                 key={client.id}
                                 onClick={() => navigate(`/clients/${client.id}/progress`)}
-                                className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all cursor-pointer border-l-4 border-blue-500"
+                                className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-all cursor-pointer border-l-4 border-blue-500 flex flex-col justify-between"
                             >
-                                <div className="flex items-center space-x-4">
-                                    <div className="bg-blue-100 text-blue-600 rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl">
-                                        {client.name ? client.name.charAt(0).toUpperCase() : client.email.charAt(0).toUpperCase()}
+                                <div>
+                                    <div className="flex items-center space-x-4 mb-4">
+                                        <div className="bg-blue-100 text-blue-600 rounded-full w-12 h-12 flex items-center justify-center font-bold text-xl">
+                                            {client.name ? client.name.charAt(0).toUpperCase() : client.email.charAt(0).toUpperCase()}
+                                        </div>
+                                        <div>
+                                            <h3 className="text-xl font-semibold">{client.name || "Unnamed Client"}</h3>
+                                            <p className="text-gray-500 text-sm">{client.email}</p>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <h3 className="text-xl font-semibold">{client.name || "Unnamed Client"}</h3>
-                                        <p className="text-gray-500 text-sm">{client.email}</p>
+                                    <div className="mb-4">
+                                        <span className="text-sm bg-green-100 text-green-800 px-2 py-1 rounded">Active</span>
                                     </div>
                                 </div>
-                                <div className="mt-4 flex justify-between items-center">
-                                    <span className="text-sm bg-green-100 text-green-800 px-2 py-1 rounded">Active</span>
+                                <div className="flex justify-between items-center border-t pt-4">
+                                    <button
+                                        onClick={(e) => handleAssignClick(e, client)}
+                                        className="text-white bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded-md text-sm font-medium transition-colors"
+                                    >
+                                        Assign Workout
+                                    </button>
                                     <span className="text-blue-600 text-sm font-medium hover:underline">View Progress &rarr;</span>
                                 </div>
                             </div>
                         ))}
                     </div>
+                )}
+
+                {assigningClient && (
+                    <AssignWorkoutModal
+                        client={assigningClient}
+                        onClose={() => setAssigningClient(null)}
+                    />
                 )}
             </div>
         </div>

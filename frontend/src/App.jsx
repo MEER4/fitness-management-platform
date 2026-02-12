@@ -5,6 +5,14 @@ import Dashboard from './pages/Dashboard';
 import Progress from './pages/Progress';
 import Clients from './pages/Clients';
 import ClientProgress from './pages/ClientProgress';
+import CreatePlan from './pages/CreatePlan';
+import CreateWorkout from './pages/CreateWorkout';
+import MyWorkouts from './pages/MyWorkouts';
+import MyPlan from './pages/MyPlan';
+import Profile from './pages/Profile';
+import CoachPlans from './pages/CoachPlans';
+import BrowsePlans from './pages/BrowsePlans';
+import PendingRequests from './pages/PendingRequests';
 import ProtectedRoute from './components/ProtectedRoute';
 import PublicRoute from './components/PublicRoute';
 import { Toaster } from 'react-hot-toast';
@@ -27,13 +35,27 @@ function App() {
                         {/* Example: Only clients can access progress */}
                         <Route element={<ProtectedRoute allowedRoles={['client', 'coach']} />}>
                             <Route path="/progress" element={<Progress />} />
+                            <Route path="/profile" element={<Profile />} />
+                        </Route>
+
+                        {/* Client Only Routes */}
+                        <Route element={<ProtectedRoute allowedRoles={['client']} />}>
+                            <Route path="/my-workouts" element={<MyWorkouts />} />
+                            <Route path="/my-plan" element={<MyPlan />} />
                         </Route>
 
                         {/* Coach Routes */}
                         <Route element={<ProtectedRoute allowedRoles={['coach']} />}>
                             <Route path="/clients" element={<Clients />} />
                             <Route path="/clients/:clientId/progress" element={<ClientProgress />} />
+                            <Route path="/create-plan" element={<CreatePlan />} />
+                            <Route path="/create-workout" element={<CreateWorkout />} />
+                            <Route path="/coach-plans" element={<CoachPlans />} />
+                            <Route path="/pending-requests" element={<PendingRequests />} />
                         </Route>
+
+                        {/* Common Routes (but technically Client facing for Browse) */}
+                        <Route path="/browse-plans" element={<BrowsePlans />} />
                     </Route>
                 </Routes>
             </Router>

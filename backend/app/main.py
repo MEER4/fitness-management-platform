@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from app.core.config import settings
 
-from app.api import auth, api_plans, api_workouts, api_user_workouts, api_progress
+from app.api import auth, api_plans, api_workouts, api_user_workouts, api_progress, api_subscriptions
 
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -33,6 +33,7 @@ app.include_router(api_plans.router, prefix="/plans", tags=["plans"])
 app.include_router(api_workouts.router, prefix="/workouts", tags=["workouts"])
 app.include_router(api_user_workouts.router, prefix="/user-workouts", tags=["user-workouts"])
 app.include_router(api_progress.router, prefix="/progress", tags=["progress"])
+app.include_router(api_subscriptions.router, prefix="/subscriptions", tags=["subscriptions"])
 
 @app.get("/")
 def read_root():

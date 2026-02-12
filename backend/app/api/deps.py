@@ -15,11 +15,7 @@ from app.crud.crud_user import get_user_by_email
 # I will create a session maker in app/db/session.py first (or here if simple)
 # But good practice is app/db/session.py
 
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-
-engine = create_engine(settings.DATABASE_URL, connect_args={"check_same_thread": False})
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+from app.db.session import SessionLocal
 
 def get_db() -> Generator:
     try:

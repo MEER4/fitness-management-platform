@@ -24,13 +24,19 @@ const Dashboard = () => {
                 {user.role === 'coach' ? (
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         {/* Coach View */}
-                        <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer border-l-4 border-blue-500">
-                            <h3 className="text-xl font-semibold mb-2">Create Plan</h3>
-                            <p className="text-gray-500 mb-4">Design new fitness plans for your clients.</p>
-                            <button className="text-blue-600 font-medium hover:underline">Go to Plans &rarr;</button>
+                        <div
+                            onClick={() => navigate('/coach-plans')}
+                            className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer border-l-4 border-blue-500"
+                        >
+                            <h3 className="text-xl font-semibold mb-2">My Plans</h3>
+                            <p className="text-gray-500 mb-4">Manage your fitness plans and memberships.</p>
+                            <button className="text-blue-600 font-medium hover:underline">View Plans &rarr;</button>
                         </div>
 
-                        <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer border-l-4 border-green-500">
+                        <div
+                            onClick={() => navigate('/create-workout')}
+                            className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer border-l-4 border-green-500"
+                        >
                             <h3 className="text-xl font-semibold mb-2">Create Workout</h3>
                             <p className="text-gray-500 mb-4">Build workout routines and exercises.</p>
                             <button className="text-green-600 font-medium hover:underline">Go to Workouts &rarr;</button>
@@ -45,6 +51,15 @@ const Dashboard = () => {
                             </div>
                             <button onClick={() => navigate('/clients')} className="mt-4 text-purple-600 font-medium hover:underline">View All Clients &rarr;</button>
                         </div>
+
+                        <div
+                            onClick={() => navigate('/pending-requests')}
+                            className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer border-l-4 border-yellow-500"
+                        >
+                            <h3 className="text-xl font-semibold mb-2">Pending Requests</h3>
+                            <p className="text-gray-500 mb-4">Approve client subscription requests.</p>
+                            <button className="text-yellow-600 font-medium hover:underline">View Requests &rarr;</button>
+                        </div>
                     </div>
                 ) : (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -55,7 +70,10 @@ const Dashboard = () => {
                                 <p className="font-bold text-indigo-700">Gold Membership</p>
                                 <p className="text-sm text-indigo-600">Expires in 24 days</p>
                             </div>
-                            <button className="w-full bg-indigo-600 text-white py-2 rounded hover:bg-indigo-700 transition-colors">
+                            <button
+                                onClick={() => navigate('/my-plan')}
+                                className="w-full bg-indigo-600 text-white py-2 rounded hover:bg-indigo-700 transition-colors"
+                            >
                                 View Plan Details
                             </button>
                         </div>
@@ -66,7 +84,10 @@ const Dashboard = () => {
                                 <h4 className="font-medium">Upper Body Power</h4>
                                 <p className="text-sm text-gray-500">45 mins • Intermediate</p>
                             </div>
-                            <button className="w-full bg-orange-600 text-white py-2 rounded hover:bg-orange-700 transition-colors">
+                            <button
+                                onClick={() => navigate('/my-workouts')}
+                                className="w-full bg-orange-600 text-white py-2 rounded hover:bg-orange-700 transition-colors"
+                            >
                                 Start Workout
                             </button>
                         </div>
