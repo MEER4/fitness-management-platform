@@ -57,32 +57,32 @@ const CreateWorkout = () => {
     };
 
     return (
-        <div className="min-h-screen bg-gray-50">
+        <div className="min-h-screen bg-gray-50 dark:bg-[#0a0a0a] transition-colors duration-300">
             <Navbar />
             <div className="max-w-3xl mx-auto p-8">
-                <div className="bg-white p-8 rounded-lg shadow-md">
-                    <h1 className="text-2xl font-bold mb-6 text-gray-800">Create New Workout</h1>
+                <div className="bg-white dark:bg-[#171717] p-8 rounded-lg shadow-md border dark:border-gray-800">
+                    <h1 className="text-2xl font-bold mb-6 text-gray-800 dark:text-gray-100">Create New Workout</h1>
 
                     <form onSubmit={handleSubmit} className="space-y-6">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-1">Workout Title</label>
+                                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Workout Title</label>
                                 <input
                                     type="text"
                                     required
                                     value={title}
                                     onChange={(e) => setTitle(e.target.value)}
-                                    className="w-full px-4 py-2 border rounded-md focus:ring-blue-500 focus:border-blue-500"
+                                    className="w-full px-4 py-2 border rounded-md focus:ring-blue-500 focus:border-blue-500 dark:bg-[#262626] dark:border-gray-700 dark:text-white dark:focus:ring-[#d4af37]"
                                     placeholder="e.g. Full Body Blast"
                                 />
                             </div>
 
                             <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-1">Difficulty Level</label>
+                                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Difficulty Level</label>
                                 <select
                                     value={level}
                                     onChange={(e) => setLevel(e.target.value)}
-                                    className="w-full px-4 py-2 border rounded-md focus:ring-blue-500 focus:border-blue-500"
+                                    className="w-full px-4 py-2 border rounded-md focus:ring-blue-500 focus:border-blue-500 dark:bg-[#262626] dark:border-gray-700 dark:text-white dark:focus:ring-[#d4af37]"
                                 >
                                     <option value="beginner">Beginner</option>
                                     <option value="intermediate">Intermediate</option>
@@ -93,11 +93,11 @@ const CreateWorkout = () => {
 
                         <div>
                             <div className="flex justify-between items-center mb-2">
-                                <label className="block text-sm font-medium text-gray-700">Exercises</label>
+                                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Exercises</label>
                                 <button
                                     type="button"
                                     onClick={addExercise}
-                                    className="text-sm text-blue-600 hover:text-blue-800 font-medium flex items-center"
+                                    className="text-sm text-blue-600 hover:text-blue-800 dark:text-[#d4af37] dark:hover:text-[#b5952f] font-medium flex items-center transition-colors"
                                 >
                                     + Add Exercise
                                 </button>
@@ -105,14 +105,14 @@ const CreateWorkout = () => {
 
                             <div className="space-y-3">
                                 {exercises.map((exercise, index) => (
-                                    <div key={index} className="flex gap-4 items-start bg-gray-50 p-3 rounded-md">
+                                    <div key={index} className="flex gap-4 items-start bg-gray-50 dark:bg-[#262626] p-3 rounded-md border dark:border-gray-700">
                                         <div className="flex-grow">
                                             <input
                                                 type="text"
                                                 placeholder="Exercise Name"
                                                 value={exercise.name}
                                                 onChange={(e) => handleExerciseChange(index, 'name', e.target.value)}
-                                                className="w-full px-3 py-2 border rounded-md text-sm mb-2 md:mb-0"
+                                                className="w-full px-3 py-2 border rounded-md text-sm mb-2 md:mb-0 dark:bg-[#171717] dark:border-gray-600 dark:text-white dark:focus:ring-[#d4af37]"
                                                 required
                                             />
                                         </div>
@@ -122,7 +122,7 @@ const CreateWorkout = () => {
                                                 placeholder="Sets"
                                                 value={exercise.sets}
                                                 onChange={(e) => handleExerciseChange(index, 'sets', e.target.value)}
-                                                className="w-full px-3 py-2 border rounded-md text-sm"
+                                                className="w-full px-3 py-2 border rounded-md text-sm dark:bg-[#171717] dark:border-gray-600 dark:text-white dark:focus:ring-[#d4af37]"
                                                 required
                                             />
                                         </div>
@@ -132,7 +132,7 @@ const CreateWorkout = () => {
                                                 placeholder="Reps"
                                                 value={exercise.reps}
                                                 onChange={(e) => handleExerciseChange(index, 'reps', e.target.value)}
-                                                className="w-full px-3 py-2 border rounded-md text-sm"
+                                                className="w-full px-3 py-2 border rounded-md text-sm dark:bg-[#171717] dark:border-gray-600 dark:text-white dark:focus:ring-[#d4af37]"
                                                 required
                                             />
                                         </div>
@@ -150,18 +150,18 @@ const CreateWorkout = () => {
                             </div>
                         </div>
 
-                        <div className="flex justify-end space-x-4 pt-4 border-t">
+                        <div className="flex justify-end space-x-4 pt-4 border-t dark:border-gray-700">
                             <button
                                 type="button"
                                 onClick={() => navigate('/')}
-                                className="px-4 py-2 text-gray-600 hover:text-gray-800"
+                                className="px-4 py-2 text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200"
                             >
                                 Cancel
                             </button>
                             <button
                                 type="submit"
                                 disabled={loading}
-                                className={`px-6 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors ${loading ? 'opacity-70 cursor-not-allowed' : ''}`}
+                                className={`px-6 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 dark:bg-[#d4af37] dark:text-black dark:hover:bg-[#b5952f] transition-colors font-semibold ${loading ? 'opacity-70 cursor-not-allowed' : ''}`}
                             >
                                 {loading ? 'Saving...' : 'Create Workout'}
                             </button>

@@ -46,37 +46,37 @@ const PendingRequests = () => {
     if (loading) return <div className="flex justify-center p-10"><LoadingSpinner /></div>;
 
     return (
-        <div className="min-h-screen bg-gray-50">
+        <div className="min-h-screen bg-gray-50 dark:bg-[#0a0a0a] transition-colors duration-300">
             <Navbar />
             <div className="p-8 max-w-4xl mx-auto">
-                <h1 className="text-3xl font-bold text-gray-900 mb-6">Pending Plan Requests</h1>
+                <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">Pending Plan Requests</h1>
 
                 {requests.length === 0 ? (
-                    <div className="bg-white p-6 rounded-lg shadow-md text-center">
-                        <p className="text-gray-500">No pending requests.</p>
+                    <div className="bg-white dark:bg-[#171717] p-6 rounded-lg shadow-md text-center border dark:border-gray-800">
+                        <p className="text-gray-500 dark:text-gray-400">No pending requests.</p>
                     </div>
                 ) : (
                     <div className="space-y-4">
                         {requests.map(req => (
-                            <div key={req.id} className="bg-white p-6 rounded-lg shadow-md flex justify-between items-center">
+                            <div key={req.id} className="bg-white dark:bg-[#171717] p-6 rounded-lg shadow-md flex justify-between items-center border dark:border-gray-800">
                                 <div>
                                     {/* Assuming user relationship is loaded, backend might need to ensure eager loading or join */}
                                     {/* The schema defined earlier 'Subscription' has 'plan' optional, but user? */}
                                     {/* Let's assume we need to fetch user details or schema includes user_id. Display ID if name not avail */}
-                                    <h3 className="text-lg font-semibold text-gray-800">User ID: {req.user_id}</h3>
-                                    <p className="text-gray-600">Requested Plan ID: {req.plan_id}</p>
-                                    <p className="text-sm text-gray-500">Date: {new Date(req.start_date || Date.now()).toLocaleDateString()}</p>
+                                    <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-100">User ID: {req.user_id}</h3>
+                                    <p className="text-gray-600 dark:text-gray-400">Requested Plan ID: {req.plan_id}</p>
+                                    <p className="text-sm text-gray-500 dark:text-gray-500">Date: {new Date(req.start_date || Date.now()).toLocaleDateString()}</p>
                                 </div>
                                 <div className="flex space-x-3">
                                     <button
                                         onClick={() => handleApprove(req.id)}
-                                        className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
+                                        className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors"
                                     >
                                         Approve
                                     </button>
                                     <button
                                         onClick={() => handleReject(req.id)}
-                                        className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700"
+                                        className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition-colors"
                                     >
                                         Reject
                                     </button>

@@ -54,55 +54,55 @@ const CreatePlan = () => {
     };
 
     return (
-        <div className="min-h-screen bg-gray-50">
+        <div className="min-h-screen bg-gray-50 dark:bg-[#0a0a0a] transition-colors duration-300">
             <Navbar />
             <div className="max-w-2xl mx-auto p-8">
-                <div className="bg-white p-8 rounded-lg shadow-md">
-                    <h1 className="text-2xl font-bold mb-6 text-gray-800">Create New Plan</h1>
+                <div className="bg-white dark:bg-[#171717] p-8 rounded-lg shadow-md border dark:border-gray-800">
+                    <h1 className="text-2xl font-bold mb-6 text-gray-800 dark:text-gray-100">Create New Plan</h1>
 
                     <form onSubmit={handleSubmit} className="space-y-6">
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">Plan Name</label>
+                            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Plan Name</label>
                             <input
                                 type="text"
                                 name="name"
                                 required
                                 value={formData.name}
                                 onChange={handleChange}
-                                className="w-full px-4 py-2 border rounded-md focus:ring-blue-500 focus:border-blue-500"
+                                className="w-full px-4 py-2 border rounded-md focus:ring-blue-500 focus:border-blue-500 dark:bg-[#262626] dark:border-gray-700 dark:text-white dark:focus:ring-[#d4af37]"
                                 placeholder="e.g. Gold Membership"
                             />
                         </div>
 
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
+                            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Description</label>
                             <textarea
                                 name="description"
                                 required
                                 value={formData.description}
                                 onChange={handleChange}
                                 rows="3"
-                                className="w-full px-4 py-2 border rounded-md focus:ring-blue-500 focus:border-blue-500"
+                                className="w-full px-4 py-2 border rounded-md focus:ring-blue-500 focus:border-blue-500 dark:bg-[#262626] dark:border-gray-700 dark:text-white dark:focus:ring-[#d4af37]"
                                 placeholder="Brief description of the plan..."
                             ></textarea>
                         </div>
 
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">Features (one per line)</label>
+                            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Features (one per line)</label>
                             <textarea
                                 name="features"
                                 value={formData.features}
                                 onChange={handleChange}
                                 rows="4"
-                                className="w-full px-4 py-2 border rounded-md focus:ring-blue-500 focus:border-blue-500"
+                                className="w-full px-4 py-2 border rounded-md focus:ring-blue-500 focus:border-blue-500 dark:bg-[#262626] dark:border-gray-700 dark:text-white dark:focus:ring-[#d4af37]"
                                 placeholder="Access to all machines&#10;Free personal trainer consultation&#10;24/7 Access"
                             ></textarea>
-                            <p className="text-xs text-gray-500 mt-1">Optional: List the key features of this plan.</p>
+                            <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">Optional: List the key features of this plan.</p>
                         </div>
 
                         <div className="grid grid-cols-2 gap-6">
                             <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-1">Price ($)</label>
+                                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Price ($)</label>
                                 <input
                                     type="number"
                                     name="price"
@@ -111,12 +111,12 @@ const CreatePlan = () => {
                                     step="0.01"
                                     value={formData.price}
                                     onChange={handleChange}
-                                    className="w-full px-4 py-2 border rounded-md focus:ring-blue-500 focus:border-blue-500"
+                                    className="w-full px-4 py-2 border rounded-md focus:ring-blue-500 focus:border-blue-500 dark:bg-[#262626] dark:border-gray-700 dark:text-white dark:focus:ring-[#d4af37]"
                                 />
                             </div>
 
                             <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-1">Duration (Months)</label>
+                                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Duration (Months)</label>
                                 <input
                                     type="number"
                                     name="duration_months"
@@ -124,7 +124,7 @@ const CreatePlan = () => {
                                     min="1"
                                     value={formData.duration_months}
                                     onChange={handleChange}
-                                    className="w-full px-4 py-2 border rounded-md focus:ring-blue-500 focus:border-blue-500"
+                                    className="w-full px-4 py-2 border rounded-md focus:ring-blue-500 focus:border-blue-500 dark:bg-[#262626] dark:border-gray-700 dark:text-white dark:focus:ring-[#d4af37]"
                                 />
                             </div>
                         </div>
@@ -133,14 +133,14 @@ const CreatePlan = () => {
                             <button
                                 type="button"
                                 onClick={() => navigate('/')}
-                                className="px-4 py-2 text-gray-600 hover:text-gray-800"
+                                className="px-4 py-2 text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200"
                             >
                                 Cancel
                             </button>
                             <button
                                 type="submit"
                                 disabled={loading}
-                                className={`px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors ${loading ? 'opacity-70 cursor-not-allowed' : ''}`}
+                                className={`px-6 py-2 bg-blue-600 dark:bg-[#d4af37] text-white dark:text-black font-semibold rounded-md hover:bg-blue-700 dark:hover:bg-[#b5952f] transition-colors ${loading ? 'opacity-70 cursor-not-allowed' : ''}`}
                             >
                                 {loading ? 'Creating...' : 'Create Plan'}
                             </button>

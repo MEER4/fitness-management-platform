@@ -51,41 +51,41 @@ const Profile = () => {
     };
 
     return (
-        <div className="min-h-screen bg-gray-50">
+        <div className="min-h-screen bg-gray-50 dark:bg-[#0a0a0a] transition-colors duration-300">
             <Navbar />
             <div className="p-8 max-w-2xl mx-auto">
-                <div className="bg-white rounded-lg shadow-md p-8">
-                    <h1 className="text-2xl font-bold text-gray-800 mb-6">Edit Profile</h1>
+                <div className="bg-white dark:bg-[#171717] rounded-lg shadow-md p-8 border dark:border-gray-800">
+                    <h1 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-6">Edit Profile</h1>
 
                     <form onSubmit={handleSubmit}>
                         <div className="mb-4">
-                            <label className="block text-gray-700 font-medium mb-2">Full Name</label>
+                            <label className="block text-gray-700 dark:text-gray-300 font-medium mb-2">Full Name</label>
                             <input
                                 type="text"
-                                className="w-full px-4 py-2 border rounded-md focus:ring-blue-500 focus:border-blue-500"
+                                className="w-full px-4 py-2 border rounded-md focus:ring-blue-500 focus:border-blue-500 dark:bg-[#262626] dark:border-gray-700 dark:text-white dark:focus:ring-[#d4af37]"
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
                             />
                         </div>
 
                         <div className="mb-4">
-                            <label className="block text-gray-700 font-medium mb-2">Email</label>
+                            <label className="block text-gray-700 dark:text-gray-300 font-medium mb-2">Email</label>
                             <input
                                 type="email"
-                                className="w-full px-4 py-2 border rounded-md focus:ring-blue-500 focus:border-blue-500 bg-gray-100"
+                                className="w-full px-4 py-2 border rounded-md focus:ring-blue-500 focus:border-blue-500 bg-gray-100 dark:bg-[#262626]/50 dark:border-gray-700 dark:text-gray-400"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 disabled // Keep email disabled for simplicity or safety if desired, but user asked for Update Profile. Let's enable it.
                             // Actually, let's enable it
                             />
-                            <p className="text-xs text-gray-500 mt-1">Changing email might require re-login (not implemented).</p>
+                            <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">Changing email might require re-login (not implemented).</p>
                         </div>
 
                         <div className="mb-6">
-                            <label className="block text-gray-700 font-medium mb-2">New Password (optional)</label>
+                            <label className="block text-gray-700 dark:text-gray-300 font-medium mb-2">New Password (optional)</label>
                             <input
                                 type="password"
-                                className="w-full px-4 py-2 border rounded-md focus:ring-blue-500 focus:border-blue-500"
+                                className="w-full px-4 py-2 border rounded-md focus:ring-blue-500 focus:border-blue-500 dark:bg-[#262626] dark:border-gray-700 dark:text-white dark:focus:ring-[#d4af37]"
                                 placeholder="Leave blank to keep current"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
@@ -95,7 +95,7 @@ const Profile = () => {
                         <button
                             type="submit"
                             disabled={loading}
-                            className={`w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition-colors ${loading ? 'opacity-70' : ''}`}
+                            className={`w-full bg-blue-600 dark:bg-[#d4af37] text-white dark:text-black font-semibold py-2 rounded-md hover:bg-blue-700 dark:hover:bg-[#b5952f] transition-colors ${loading ? 'opacity-70' : ''}`}
                         >
                             {loading ? 'Saving Changes...' : 'Save Changes'}
                         </button>
