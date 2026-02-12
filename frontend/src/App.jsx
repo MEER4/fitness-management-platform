@@ -53,6 +53,7 @@ function App() {
                                 <Route path="/clients" element={<Clients />} />
                                 <Route path="/clients/:clientId/progress" element={<ClientProgress />} />
                                 <Route path="/create-plan" element={<CreatePlan />} />
+                                <Route path="/edit-plan/:planId" element={<CreatePlan />} />
                                 <Route path="/create-workout" element={<CreateWorkout />} />
                                 <Route path="/coach-plans" element={<CoachPlans />} />
                                 <Route path="/pending-requests" element={<PendingRequests />} />
